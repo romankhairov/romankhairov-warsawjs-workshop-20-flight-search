@@ -1,20 +1,28 @@
 import React from 'react'
 
-export default class SearchView extends React.Component {
+class SearchView extends React.Component {
     state = {
-        from: 'WAW',
-        to: 'JFK',
-        departDate: '2018-05-21',
-        returnDate: '2018-05-28'
+        to: null,
+        from: null,
+        departDate: null,
+        returnDate: null
     }
-    onFormChange = propertyToUpdate => e => {
+    onChange = field => e => {
         this.setState({
-            [propertyToUpdate]: e.target.value
+            [field]: e.target.value
         })
     }
     onSubmit = e => {
         e.preventDefault()
-        this.props.onSearch(this.state)
+        const {to, from, departDate, returnDate} this.setState
+
+        if (!(to && from && departDate && returnDate)) {
+          return
+        }
+
+        this.props.onSearch({
+          to, from, departDate, returnDate
+        })
     }
     render() {
         const {to, from, departDate, returnDate} = this.state

@@ -2,15 +2,17 @@ import React from 'react'
 
 class SearchView extends React.Component {
     state = {
-        to: null,
-        from: null,
-        departDate: null,
-        returnDate: null
-    }
-    onChange = field => e => {
-        this.setState({
-            [field]: e.target.value
-        })
+      state = {
+        from: 'WAW',
+        to: 'JFK',
+        departDate: '2018-05-12',
+        returnDate: '2018-05-21'
+      }
+      onChange = (e) => {
+     this.setState({[e.target.id] : e.target.value }, () => {
+       console.log('po:',this.state);
+     });
+
     }
     onSubmit = e => {
         e.preventDefault()
